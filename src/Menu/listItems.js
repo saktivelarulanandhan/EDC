@@ -9,8 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
-import { Collapse, List } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 export const mainListItems = (
   <React.Fragment>

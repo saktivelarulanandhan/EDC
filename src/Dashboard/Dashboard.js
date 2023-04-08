@@ -21,14 +21,13 @@ import { mainListItems, secondaryListItems } from '../Menu/listItems';
 import Chart from './Charts/Chart';
 import Orders from './Grid/Orders';
 import QuickFilter from './Filters/QuickFilter';
-import EDCCard from '../Components/Card';
 import QuickActions from './QuickActions/QuickActions';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="#">
         EDC
       </Link>{' '}
       {new Date().getFullYear()}
@@ -92,7 +91,7 @@ const mdTheme = createTheme({
 });
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };

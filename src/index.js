@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Dashboard from './Dashboard/Dashboard';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ROUTING_PATH } from './Routing/RoutingConstant';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Dashboard />
+    <BrowserRouter>
+      <Routes>
+          {ROUTING_PATH.map((route) => {
+            console.log(route);
+            return <Route exact path={route.path} element={route.component}></Route>;
+          })}
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
