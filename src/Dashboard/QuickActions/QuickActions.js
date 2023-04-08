@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material';
 import React from 'react';
-import EDCCard from './Components/Card';
+import EDCCard from '../../Components/Card';
 
 import TodayIcon from '@mui/icons-material/Today';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';

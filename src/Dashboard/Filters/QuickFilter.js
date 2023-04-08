@@ -1,6 +1,6 @@
 import { Autocomplete, Button, Grid, IconButton, TextField } from '@mui/material';
 import React from 'react';
-import Title from './Title';
+import Title from '../../Components/Title';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 

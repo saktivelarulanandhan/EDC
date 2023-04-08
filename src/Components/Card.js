@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, Grid } from '@mui/material';
 import React from 'react';
-import Title from '../Title';
+import Title from './Title';
 
 function EDCCard(props) {
   return (
