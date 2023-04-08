@@ -30,10 +30,10 @@ const rows = [
     'Yes'
   ),
   createData(2, '021345',
-  '19 May, 2021 : 10:10 AM',
-  '19 May, 2021 : 10:10 AM',
-  'New York',
-  'Yes'),
+    '19 May, 2021 : 10:10 AM',
+    '19 May, 2021 : 10:10 AM',
+    'New York',
+    'Yes'),
   createData(
     3,
     '021345',
@@ -74,7 +74,8 @@ export default function Orders() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.shipTo}</TableCell>

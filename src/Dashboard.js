@@ -21,6 +21,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Orders from './Orders';
 import QuickFilter from './QuickFilter';
+import EDCCard from './Components/Card';
+import QuickActions from './QuickActions';
 
 function Copyright(props) {
   return (
@@ -186,9 +188,9 @@ function DashboardContent() {
               </Grid>
               {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
-                <Paper
+                <Paper 
                   sx={{
-                    p: 2,
+                    p: 0,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
@@ -198,6 +200,13 @@ function DashboardContent() {
                 </Paper>
               </Grid>
               {/* Recent Orders */}
+              <Grid item xs={12} md={12} lg={12} sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                  }} >
+                  <QuickActions />
+              </Grid>
+
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />
