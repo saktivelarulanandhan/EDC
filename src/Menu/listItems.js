@@ -10,6 +10,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <React.Fragment>
@@ -19,12 +20,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <Link to="formbuilder"><ListItemButton>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Tests" />
-    </ListItemButton>
+      <ListItemText primary="Form Builder" />
+    </ListItemButton></Link>
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
