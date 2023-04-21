@@ -4,6 +4,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import Login from "../Login/Login";
 import ClinicalApp from "../ClinicalApp";
 import Error from "../Error/Error";
+import FormReviewer from "../Components/FormBuilder/FormReviewer";
 
 export const ROUTING_PATH = [{
     path: '/',
@@ -17,6 +18,9 @@ export const ROUTING_PATH = [{
     }, {
         path:'formbuilder',
         component: <FormBuilder />
+    }, {
+        path:'formReviewer',
+        component: <FormReviewer />
     }, {
         path: '*',
         component: <Error />

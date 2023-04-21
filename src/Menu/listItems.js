@@ -22,19 +22,19 @@ export const mainListItems = (
     </ListItemButton>
     <Link to="formbuilder"><ListItemButton>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Form Builder" />
     </ListItemButton></Link>
-    <ListItemButton>
+    <Link to="formReviewer"><ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Subject" />
-    </ListItemButton>
+      <ListItemText primary="Form Reviewer" />
+    </ListItemButton></Link>
     <ListItemButton>
       <ListItemIcon>
-        <BarChartIcon />
+        <ShoppingCartIcon />
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItemButton>

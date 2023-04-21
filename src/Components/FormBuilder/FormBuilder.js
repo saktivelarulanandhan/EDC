@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { SaveOutlined, SaveAlt } from '@mui/icons-material';
 import { GridDeleteIcon } from '@mui/x-data-grid';
 import { Box, Button, Container, Stack, Tab, Tabs } from '@mui/material';
+import EDCBreadcrumbs from '../BreadCrumbs';
 
 
 window.jQuery = $;
@@ -13,12 +14,12 @@ require("formBuilder");
 
 function FormBuilder() {
     const fb = createRef();
-    const [value, setValue] = useState(0);
-
+    let formObj;
+    const [value, setValue] = useState(0);   
     const formData = [
         {
             type: "header",
-            subtype: "h1",
+            subtype: "h4",
             label: "Demographic - EDC Form Builder"
         },
         {
@@ -26,18 +27,27 @@ function FormBuilder() {
             label: "Clinical Form builder helps to derive the form which are required for data entry for a subject"
         }
     ];
-
+        
     useEffect(() => {
         console.log(fb);
-        $(fb.current).formBuilder({ formData, showActionButtons: false });
+        formObj = $(fb.current).formBuilder({ formData, showActionButtons: false});
     }, []);
 
     const handleChange = (event, newValue) => {
+        console.log(newValue);
         setValue(newValue);
     };
+
+    const saveForm = () => {
+        const result = formObj.actions.save();
+        console.log(result);
+    }
     return (
         <>
-            <Box sx={{ maxWidth: { xs: '100%', sm: '100%' }, bgcolor: 'background.paper', borderBottom: '1px solid #ccc' }}>
+            <Box pl={1} pb={1} pt={1} mb={1} sx={{ maxWidth: { xs: '100%', sm: '100%' }, bgcolor: 'background.paper', borderBottom: '1px solid #ccc' }}>
+                <EDCBreadcrumbs />
+            </Box>
+            <Box  sx={{ maxWidth: { xs: '100%', sm: '100%' }, bgcolor: 'background.paper', borderBottom: '1px solid #ccc' }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -69,8 +79,8 @@ function FormBuilder() {
                     <Button variant="outlined" endIcon={<SaveAlt />}>
                         Save As Draft
                     </Button>
-                    <Button variant="contained" endIcon={<SaveOutlined />}>
-                        Save & Next
+                    <Button variant="contained" endIcon={<SaveOutlined />} onClick={saveForm}>
+                        Save
                     </Button>
                 </Stack>
             </Container>
