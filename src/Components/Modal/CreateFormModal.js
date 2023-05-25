@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import AddFormTab from '../Tab/AddFormTab';
+import ReviwerComments from '../Tab/ReviewerComments';
 
 const style = {
   position: 'absolute',
@@ -24,6 +25,8 @@ export default function CreateFormModal(props) {
   React.useEffect( () => {
     setOpen(props.popupForm)
   }, [props.popupForm]);
+ 
+  const closeForm = () => setOpen(false);
 
   return (
     <div>
@@ -34,7 +37,7 @@ export default function CreateFormModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <AddFormTab createFormHandler={props.createFormHandler}/>
+          {props.where === 'reviwerComments'? <ReviwerComments />: <AddFormTab createFormHandler={props.createFormHandler} closeForm={closeForm} />}
         </Box>
       </Modal>
     </div>

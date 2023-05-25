@@ -26,7 +26,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Form Builder" />
     </ListItemButton></Link>
-    <Link to="formReviewer"><ListItemButton>
+    <Link to="reviewGrid"><ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>

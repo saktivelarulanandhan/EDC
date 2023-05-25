@@ -2,15 +2,59 @@ import React from 'react';
 
 export const sampleForm = {
     formTabs: [
-        { formName: 'Demographic', formElements: [] },
+        { formName: 'Demographic', formElements: [
+            [
+                {
+                  "type": "header",
+                  "subtype": "h4",
+                  "label": "Demographic - EDC Form Builder"
+                },
+                {
+                  "type": "paragraph",
+                  "subtype": "p",
+                  "label": "Clinical Form builder helps to derive the form which are required for data entry for a subject"
+                },
+                {
+                  "type": "autocomplete",
+                  "label": "Gender",
+                  "className": "form-control",
+                  "name": "autocomplete-1682763352613",
+                  "values": [
+                    {
+                      "label": "Male",
+                      "value": "M"
+                    },
+                    {
+                      "label": "FeMale",
+                      "value": "F"
+                    }
+                  ]
+                },
+                {
+                  "type": "date",
+                  "label": "DOB",
+                  "className": "form-control",
+                  "name": "date-1682763356100"
+                },
+                {
+                  "type": "autocomplete",
+                  "label": "Marital Status",
+                  "className": "form-control",
+                  "name": "autocomplete-1682763357548",
+                  "values": [
+                    {
+                      "label": "Married",
+                      "value": "M"
+                    },
+                    {
+                      "label": "UnMarried",
+                      "value": "UM"
+                    }
+                  ]
+                }
+              ]
+        ] },
         { formName: 'HAEM - BioChemistry', formElements: [] },
-        { formName: 'MH - Medical Histroy', formElements: [] },
-        { formName: 'LB - Urine Drug Test', formElements: [] },
-        { formName: 'SU - Substance Abuse', formElements: [] },
-        { formName: 'AE - Adverse Event', formElements: [] },
-        { formName: 'CS01 - Condition Day 1', formElements: [] },
-        { formName: 'CS02 - Condition Day 2', formElements: [] },
-        { formName: 'CS03 - Condition Day 3', formElements: [] }
     ]
 }
 // Creating the context object and passing the default values.

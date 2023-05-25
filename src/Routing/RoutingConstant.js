@@ -5,6 +5,8 @@ import Login from "../Login/Login";
 import ClinicalApp from "../ClinicalApp";
 import Error from "../Error/Error";
 import FormReviewer from "../Components/FormBuilder/FormReviewer";
+import ReviewForm from "../Components/FormReviewer/ReviewForm";
+import ReviewGrid from "../Components/FormReviewer/ReviewGrid";
 
 export const ROUTING_PATH = [{
     path: '/',
@@ -20,8 +22,11 @@ export const ROUTING_PATH = [{
         component: <FormBuilder />
     }, {
         path:'formReviewer',
-        component: <FormReviewer />
+        component: <ReviewForm />
     }, {
+        path:'reviewGrid',
+        component: <ReviewGrid />
+    },{
         path: '*',
         component: <Error />
     }]

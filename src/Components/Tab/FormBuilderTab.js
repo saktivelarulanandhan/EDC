@@ -45,7 +45,7 @@ function FormBuilderTab(props) {
                     <AddCircleOutline />
                 </IconButton>
             </Tooltip>
-            <CreateFormModal createFormHandler={props.createFormHandler} addPopupcloseHandler={addPopupcloseHandler} popupForm={popupForm}/>{/* } */}
+            <CreateFormModal where={"addForm"} createFormHandler={props.createFormHandler} addPopupcloseHandler={addPopupcloseHandler} popupForm={popupForm}/>{/* } */}
         </>
     )
 }

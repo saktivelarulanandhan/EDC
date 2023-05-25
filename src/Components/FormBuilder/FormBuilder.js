@@ -19,7 +19,18 @@ function FormBuilder() {
     const [formTabDetails, setFormTabDetails] = useState(sampleForm.formTabs)
     const fb = createRef();
     let formObj;
-
+    var userAttrs = {};
+    const newAttributes = {
+        units: {
+            type: 'select',
+            label: 'Units',
+            values: ['Kg']
+        }
+    }
+    const fields = ["autocomplete", "checkbox-group", "date", "number", "radio-group", "select", "text", "textarea", "maxlength", "button", "file", "header", "paragraph", "hidden"];
+    fields.forEach(function (item, index) {
+        userAttrs[item] = newAttributes;
+    });
     const formData = [
         {
             type: "header",
@@ -29,12 +40,13 @@ function FormBuilder() {
         {
             type: "paragraph",
             label: "Clinical Form builder helps to derive the form which are required for data entry for a subject"
-        }
+        },
+        { "type": "select", "label": "Display As", "className": "form-control", "name": "autocomplete-1684562050751", "values": [{ "label": "Row", "value": "row" }, { "label": "Column", "value": "col" }] }
     ];
 
     useEffect(() => {
         console.log(fb);
-        formObj = $(fb.current).formBuilder({ formData, showActionButtons: false });
+        formObj = $(fb.current).formBuilder({ formData, showActionButtons: false, typeUserAttrs: userAttrs });
     }, []);
 
 
@@ -47,17 +59,15 @@ function FormBuilder() {
     const createFormHandler = () => {
         /* const tempFromObject = formTabDetails;
         tempFromObject.push({ formName: 'Demographic', formElements: [] }) */
-        const addStaticObj = [{ formName: 'Demographic', formElements: [] }];
+        const addStaticObj = [{ formName: 'MH - Medical History', formElements: [] }];
         setFormTabDetails((state) => {
-            return [...state, ...addStaticObj] 
+            return [...state, ...addStaticObj]
         });
-        console.log(formTabDetails);
     }
 
 
     return (
         <FormContext.Provider value={formTabDetails}>
-            {formTabDetails.length}
             <Box pl={1} pb={1} pt={1} mb={1} sx={{ maxWidth: { xs: '100%', sm: '100%' }, bgcolor: 'background.paper', borderBottom: '1px solid #ccc' }}>
                 <EDCBreadcrumbs />
             </Box>

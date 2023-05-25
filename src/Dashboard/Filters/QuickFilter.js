@@ -1,4 +1,4 @@
-import { Autocomplete, Button, Grid, IconButton, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, Grid, IconButton, TextField } from '@mui/material';
 import React from 'react';
 import Title from '../../Components/Title';
 import SearchIcon from '@mui/icons-material/Search';
@@ -33,7 +33,7 @@ function QuickFilter() {
                                 '& .MuiFormLabel-root': {
                                     fontSize: '1rem',
                                 },
-                            }}/>
+                            }} />
                         )}
                     />
                 </Grid>
@@ -43,11 +43,11 @@ function QuickFilter() {
                         autoHighlight
                         options={[239472]}
                         renderInput={(params) => (
-                            <TextField {...params} label="Project Name" variant="standard" sx={{
+                            <TextField {...params} label="Subject Name" variant="standard" sx={{
                                 '& .MuiFormLabel-root': {
                                     fontSize: '1rem',
                                 },
-                            }}/>
+                            }} />
                         )}
                     />
                 </Grid>
@@ -55,13 +55,13 @@ function QuickFilter() {
                     <Autocomplete
                         id="disable-close-on-select"
                         autoHighlight
-                        options={[99383938,2131232,12323223]}
+                        options={[99383938, 2131232, 12323223]}
                         renderInput={(params) => (
                             <TextField {...params} label="Site Name" variant="standard" sx={{
                                 '& .MuiFormLabel-root': {
                                     fontSize: '1rem',
                                 },
-                            }}/>
+                            }} />
                         )}
                     />
                 </Grid>
@@ -82,19 +82,19 @@ function QuickFilter() {
                     />
                 </Grid>
             </Grid>
-            <Grid m={1} pt={0.5} container spacing={2} direction="row"
+            <Grid m={1} pt={2} container spacing={2} direction="row"
                 alignItems="center"
                 justifyContent="center">
-                <Grid item xs={6} sm={1.2}>
-                    <Button size="small" mr={1} color="primary" variant="contained">
-                        <SearchIcon fontSize="small"/> Search
+                <Box mr={1}>
+                    <Button size="small"  color="primary" variant="contained">
+                        <SearchIcon fontSize="small" /> Search
                     </Button>
-                </Grid>
-                <Grid item xs={6} sm={1.2}>
+                </Box>
+                <Box>
                     <Button size="small" variant="outlined">
-                        <FilterAltIcon fontSize="small"/> Filter
+                        <FilterAltIcon fontSize="small" /> Filter
                     </Button>
-                </Grid>
+                </Box>
             </Grid>
 
 
