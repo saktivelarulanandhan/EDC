@@ -26,6 +26,7 @@ const ReviewForm = () => {
     const routeHandler = () => {
         navigate("/clinicalApp/reviewGrid?reject=3");
     }
+
     
     const renderFormObj = () => {
         const formData = [
@@ -37,7 +38,8 @@ const ReviewForm = () => {
             { "type": "number", "label": "Age", "className": "form-control", "name": "number-1684570307921" },
             { "type": "date", "label": "Date Of Birth", "className": "form-control", "name": "date-1684566227404" },
             { "type": "radio-group", "label": "Gender", "name": "radio-group-1684568281738", "values": [{ "label": "Male", "value": "M" }, { "label": "Female", "value": "F" }, { "label": "Other", "value": "O" }] },
-            { "type": "text", "label": "Blood Group", "className": "form-control", "name": "text-1682062158959", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" }, { "type": "text", "label": "Blood Group", "className": "form-control", "name": "text-1682062187301", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" },
+            { "type": "text", "label": "Blood Group", "className": "form-control", "name": "text-1682062158959", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" }, 
+            { "type": "text", "label": "Test Field", "className": "form-control", "name": "text-1682062187301", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" },
             { "type": "text", "label": "Weight", "className": "form-control", "name": "text-1684573352182", "subtype": "text", "units": "Kg" }];
 
         const filedMapper = [
