@@ -1,7 +1,8 @@
 import react from "react";
-import ReviewGrid from "../FormReviewer/ReviewGrid"
+import DataEntryGrid from "../DataEntryOperator/DataEntryGrid";
+
 
 const DataEntryReviewerGrid = () => {
-    return <ReviewGrid />
+    return <DataEntryGrid />
 }
 export default DataEntryReviewerGrid;
