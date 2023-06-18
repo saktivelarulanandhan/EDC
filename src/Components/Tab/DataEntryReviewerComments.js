@@ -111,6 +111,33 @@ export default function DataEntryReviwerComments(props) {
                             </Box>
                         }
                     </Box>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12}>
+                            <TextField
+                                required
+                                id="lastName"
+                                name="lastName"
+                                label="Comments"
+                                fullWidth
+                                autoComplete="family-name"
+                                variant="standard"
+                                sx={{
+                                    '& .MuiFormLabel-root': {
+                                        fontSize: '1rem',
+                                    },
+                                }}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Stack direction="row"
+                                alignItems="center"
+                                justifyContent="center" spacing={2} pt={4} pb={2}>
+                                <Button variant="contained" endIcon={<SaveOutlined />}>
+                                    Add Comments
+                                </Button>
+                            </Stack>
+                        </Grid>
+                    </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Box minHeight={'150px'} > {comments.mannual.length !== 0 ? comments.mannual.map(userComment => {
@@ -142,6 +169,33 @@ export default function DataEntryReviwerComments(props) {
                         </Box>
                     }
                     </Box>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12}>
+                            <TextField
+                                required
+                                id="lastName"
+                                name="lastName"
+                                label="Comments"
+                                fullWidth
+                                autoComplete="family-name"
+                                variant="standard"
+                                sx={{
+                                    '& .MuiFormLabel-root': {
+                                        fontSize: '1rem',
+                                    },
+                                }}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Stack direction="row"
+                                alignItems="center"
+                                justifyContent="center" spacing={2} pt={4} pb={2}>
+                                <Button variant="contained" endIcon={<SaveOutlined />}>
+                                    Add Comments
+                                </Button>
+                            </Stack>
+                        </Grid>
+                    </Grid>
                 </TabPanel>
             </Box>
         </Box>
