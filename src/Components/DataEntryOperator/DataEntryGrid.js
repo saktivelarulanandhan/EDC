@@ -1,11 +1,11 @@
-import { DataGrid, GridMoreVertIcon } from '@mui/x-data-grid';
 import React, { useEffect, useState } from 'react';
+import { DataGrid } from '@mui/x-data-grid';
 import Title from '../Title';
-import { Box, Chip, Grid, IconButton, Menu, MenuItem, Paper } from '@mui/material';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import QuickFilter from '../../Dashboard/Filters/QuickFilter';
+import { Box, Chip, Grid, Paper } from '@mui/material';
+import { useNavigate} from 'react-router-dom';
+import DataEntryFilter from '../../Dashboard/Filters/DataEntryFilter';
 
-
+//Client -> Project -> Study -> Site -> Subject -> Visit
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
     return { id, date, name, shipTo, paymentMethod, amount };
@@ -53,17 +53,11 @@ const rows = [
 
 
 
-const ReviewGrid = (props) => {
+const DataEntryGrid = (props) => {
     const navigate = useNavigate();
     const [reject, setReject] = useState(0);
-    const ITEM_HEIGHT = 48;
-    const options = [
-        'Extract Data',
-        'Compare Data',
-        'History',
-        'Sign Off'];
     const handleEvent = (event) => {
-        navigate("/clinicalApp/formReviewer");
+        navigate("/clinicalApp/dataEntry/form");
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,48 +68,6 @@ const ReviewGrid = (props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const MoreActions = () => {
-        return (
-            <div>
-                <IconButton
-                    aria-label="more"
-                    id="long-button"
-                    aria-controls={open ? 'long-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-haspopup="true"
-                    style={{ paddingTop: '0' }}
-                    onClick={handleClick}
-                >
-                    <GridMoreVertIcon />
-                </IconButton>
-                <Menu
-                    id="long-menu"
-                    MenuListProps={{
-                        'aria-labelledby': 'long-button',
-                    }}
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    PaperProps={{
-                        style: {
-                            maxHeight: ITEM_HEIGHT * 4.5,
-                            width: '20ch',
-                        },
-                    }}
-                >
-                    {options.map((option) => (
-                        <>
-                            <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                                {option}
-                            </MenuItem>
-                        </>
-                    ))}
-                </Menu>
-            </div>
-        )
-    }
-
     const columns = [
         {
             field: 'subjectId',
@@ -132,13 +84,13 @@ const ReviewGrid = (props) => {
                 // this is a temp logic for demo
                 console.log(reject);
                 const listOfStatus = [{
-                    status: 'approved', element: <Chip style={{ backgroundColor: '#55c241', color: '#fff' }}
-                        label="Approved"
+                    status: 'pending', element: <Chip style={{ backgroundColor: '#1e9bcd', color: '#fff' }}
+                        label="pending"
                     />
                 },
                 {
-                    status: 'rejected', element: <Chip style={{ backgroundColor: '#D32F2F', color: '#fff' }}
-                        label="Rejected"
+                    status: 'pending', element: <Chip style={{ backgroundColor: '#1e9bcd', color: '#fff' }}
+                        label="pending"
                     />
                 },
                 {
@@ -222,7 +174,7 @@ const ReviewGrid = (props) => {
                         height: 240,
                     }}
                 >
-                    <QuickFilter />
+                    <DataEntryFilter />
                 </Paper>
             </Grid>
             <Grid item xs={12} md={8} lg={9}>
@@ -234,10 +186,7 @@ const ReviewGrid = (props) => {
                     }}
                 >
                     <Box display={'flex'} flexDirection={'row'}>
-                        <Title>Form Review</Title>
-                        {!props.hideMoreActions && <Box alignItems={'end'} display={'flex'} flexDirection={'row-reverse'} width={'93%'}>
-                            {MoreActions()}
-                        </Box>}
+                        <Title>Data Entry - Forms</Title>
                     </Box>
                     <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
@@ -262,4 +211,4 @@ const ReviewGrid = (props) => {
     )
 }
 
-export default ReviewGrid;
+export default DataEntryGrid;
