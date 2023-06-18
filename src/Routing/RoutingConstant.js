@@ -9,6 +9,7 @@ import ReviewForm from "../Components/FormReviewer/ReviewForm";
 import ReviewGrid from "../Components/FormReviewer/ReviewGrid";
 import DataEntryOperator from "../Components/DataEntryOperator/DataEntryOperator";
 import DataEntryForm from "../Components/DataEntryOperator/DataEntryForm";
+import DataEntryReviewerGrid from "../Components/DataEntryReeviewer/DataEntryReviewerGrid";
 
 export const ROUTING_PATH = [{
     path: '/',
@@ -34,6 +35,9 @@ export const ROUTING_PATH = [{
     },{
         path:'dataEntry/form',
         component: <DataEntryForm />
+    },{
+        path:'dataEntryReviewer',
+        component: <DataEntryReviewerGrid />
     },{
         path: '*',
         component: <Error />
