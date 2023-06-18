@@ -1,7 +1,9 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import AddFormTab from "../Tab/AddFormTab";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import AddFormTab from '../Tab/AddFormTab';
+import ReviwerComments from '../Tab/ReviewerComments';
+import DataEntryReviwerComments from '../Tab/DataEntryReviewerComments';
 
 const style = {
   position: "absolute",
@@ -36,6 +38,9 @@ export default function CreateFormModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>{props.loadComp}</Box>
+        {/* <Box sx={style}>
+          {props.where === 'dataEntryReviewerComments' ? <DataEntryReviwerComments /> : (props.where === 'reviwerComments'? <ReviwerComments />: <AddFormTab createFormHandler={props.createFormHandler} closeForm={closeForm} />)}
+        </Box> */}
       </Modal>
     </div>
   );
