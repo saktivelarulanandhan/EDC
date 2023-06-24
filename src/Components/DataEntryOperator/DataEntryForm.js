@@ -2,7 +2,7 @@ import ClinicalForm from "../ClinicalForm/ClinicalForm";
 
 function DataEntryForm(){
     return <div>
-        <ClinicalForm />
+        <ClinicalForm isDataEntryOperator={true}/>
     </div>
 }
 export default DataEntryForm;

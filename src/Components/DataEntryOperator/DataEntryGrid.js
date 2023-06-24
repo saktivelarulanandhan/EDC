@@ -57,7 +57,11 @@ const DataEntryGrid = (props) => {
     const navigate = useNavigate();
     const [reject, setReject] = useState(0);
     const handleEvent = (event) => {
-        navigate("/clinicalApp/dataEntry/form");
+        if(props.isDataEntryReviewer){
+            navigate("/clinicalApp/dataEntryReviewer/form");
+        } else {
+            navigate("/clinicalApp/dataEntry/form");
+        }
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);

@@ -7,7 +7,7 @@ import CreateFormModal from '../Modal/CreateFormModal';
 import EDCBreadcrumbs from '../BreadCrumbs';
 window.jQuery = $;
 window.$ = $;
-function ClinicalForm() {
+function ClinicalForm(props) {
     const [value, setValue] = useState(0);
     const navigate = useNavigate();
     const [popupForm, setPopupForm] = useState(false);
@@ -27,15 +27,15 @@ function ClinicalForm() {
         const formData = [
             { "type": "header", "subtype": "h4", "label": "Demographic - EDC Form Entry" },
             { "type": "paragraph", "subtype": "p", "label": "Clinical Form entry helps to collect data for a subject" },
-            { "type": "text", "label": "Name", "className": "form-control", "name": "text-1682062140339", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" },
-            { "type": "text", "label": "Address", "className": "form-control", "name": "text-1682062149300", "subtype": "text", "showInGroupDesc": "Use Radio button with M and F value" },
+            { "type": "text", "label": "Name", "className": "form-control", "name": "text-1682062140339", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field", "value": "Subject name" },
+            { "type": "text", "label": "Address", "className": "form-control", "name": "text-1682062149300", "subtype": "text", "showInGroupDesc": "Use Radio button with M and F value", "value": "Address comes here" },
             { "type": "select", "label": "Marital Status", "className": "form-control", "name": "select-1684565791229", "values": [{ "label": "Single", "value": "male", "selected": true }, { "label": "Married", "value": "female" }] },
             { "type": "number", "label": "Age", "className": "form-control", "name": "number-1684570307921" },
             { "type": "date", "label": "Date Of Birth", "className": "form-control", "name": "date-1684566227404" },
             { "type": "radio-group", "label": "Gender", "name": "radio-group-1684568281738", "values": [{ "label": "Male", "value": "M" }, { "label": "Female", "value": "F" }, { "label": "Other", "value": "O" }] },
-            { "type": "text", "label": "Blood Group", "className": "form-control", "name": "text-1682062158959", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" }, 
-            { "type": "text", "label": "Test Field", "className": "form-control", "name": "text-1682062187301", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" },
-            { "type": "text", "label": "Weight", "className": "form-control", "name": "text-1684573352182", "subtype": "text", "units": "Kg" }];
+            { "type": "text", "label": "Blood Group", "className": "form-control", "name": "text-1682062158959", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field", "value": "B+" }, 
+            { "type": "text", "label": "Test Field", "className": "form-control", "name": "text-1682062187301", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field", "value": "Test field value" },
+            { "type": "text", "label": "Weight", "className": "form-control", "name": "text-1684573352182", "subtype": "text", "units": "Kg", "value": "75" }];
 
         const filedMapper = [
             {
@@ -49,14 +49,15 @@ function ClinicalForm() {
                 </Typography></Box>
             },
             {
-                type: 'text', value: (element) => <FormControl variant="standard" fullWidth>
+                type: 'text', value: (element) => <FormControl variant="standard" style={{display: 'flex', flexDirection: "row"}}>
                     <InputLabel htmlFor="input-with-icon-adornment" disableAnimation={true} shrink={true}>
                         {element.label}
                     </InputLabel>
-                    <Box sx={{ '& > :not(style)': { m: 1, mt: 2 } }}>
+                    <Box sx={{ '& > :not(style)': { m: 1, mt: 2 } }} style={{flex: 1}}>
                         <Input style={{ width: element.units && element.units.length !== 0 ? '80%' : '100%' }}
                             id="input-with-icon-adornment"
                             type="text"
+                            value={element.value ? element.value : ''}
                             startAdornment={
                                 <InputAdornment position="start">
                                     <Message onClick={addPopupOpenHandler} /> 
@@ -72,6 +73,7 @@ function ClinicalForm() {
                             }}
                         />}
                     </Box>
+                    {props.isDataEntryOperator && <span style={{fontWeight: "bold", color: "green"}}>REVIEWED</span>}
 
                 </FormControl>
             },
@@ -178,6 +180,7 @@ function ClinicalForm() {
         return formData.map(element => {
             const isFoundIndex = filedMapper.findIndex(field => field.type === element.type);
             if (isFoundIndex !== -1) {
+                console.log(element);
                 return <Grid item xs={12} sm={12} spacing={2} m={2} pt={2} mb={0}>
                     {filedMapper[isFoundIndex]['value'](element)}
                 </Grid>
