@@ -3,6 +3,6 @@ import DataEntryGrid from "../DataEntryOperator/DataEntryGrid";
 
 
 const DataEntryReviewerGrid = () => {
-    return <DataEntryGrid />
+    return <DataEntryGrid isDataEntryReviewer={true}/>
 }
 export default DataEntryReviewerGrid;
