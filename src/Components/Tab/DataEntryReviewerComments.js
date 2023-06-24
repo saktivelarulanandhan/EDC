@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Autocomplete, Button, Chip, Grid, Stack, TextField } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
+import { useRef } from 'react';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -41,6 +42,8 @@ function a11yProps(index) {
 }
 
 export default function DataEntryReviwerComments(props) {
+    const inputElement = useRef();
+
     const [value, setValue] = React.useState(0);
     const [comments, setComments] = React.useState({ "preferred": [{ comment: "Reviewer 1 Comment", date: "06 May 2023, 12:57" }], "mannual": [{ comment: "Reviewer 2 Comment", date: "06 May 2023, 12:57"  }] });
 
@@ -54,7 +57,8 @@ export default function DataEntryReviwerComments(props) {
     };
 
     const addCommentsHandler = (params) => {
-        const addComment = [{ comment: 'Check first Name', date: "06 May 2023, 12:57"  }];
+        const currDt = new Date();
+        const addComment = [{ comment: inputElement.current.value, date: `${currDt.getDate()} ${currDt.toLocaleString("default",{month: 'short'})} ${currDt.getFullYear()}, ${currDt.getHours()}: ${currDt.getMinutes()}`}];
         setComments(prevcomments => {
             prevcomments.preferred = [...prevcomments.preferred, ...addComment];
             return { ...prevcomments };
@@ -81,7 +85,7 @@ export default function DataEntryReviwerComments(props) {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabPanel value={value} index={0}>
-                    <Box minHeight={'150px'} >
+                    <Box minHeight={'150px'} maxHeight={'500px'} overflow={'auto'} >
                         {comments.preferred.length !== 0 ? comments.preferred.map(userComment => {
                             return <Box mb={1} style={{
                                 display: "flex",
@@ -112,8 +116,9 @@ export default function DataEntryReviwerComments(props) {
                         }
                     </Box>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12}>
+                        <Grid item xs={12} sm={12} marginTop={'1rem'}>
                             <TextField
+                                inputRef={inputElement}
                                 required
                                 id="lastName"
                                 name="lastName"
@@ -132,7 +137,7 @@ export default function DataEntryReviwerComments(props) {
                             <Stack direction="row"
                                 alignItems="center"
                                 justifyContent="center" spacing={2} pt={4} pb={2}>
-                                <Button variant="contained" endIcon={<SaveOutlined />}>
+                                <Button variant="contained" endIcon={<SaveOutlined />} onClick={addCommentsHandler}>
                                     Add Comments
                                 </Button>
                             </Stack>
