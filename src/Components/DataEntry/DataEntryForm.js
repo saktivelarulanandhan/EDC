@@ -1,32 +1,30 @@
-import { Box, Button, Container, FormControl, FormControlLabel, Grid, Input, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Button, Container, FormControl, FormControlLabel, Grid, Input, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import EDCBreadcrumbs from '../BreadCrumbs';
 import { Message, SaveAlt, SaveOutlined } from '@mui/icons-material';
 import { GridDeleteIcon } from '@mui/x-data-grid';
 import CreateFormModal from '../Modal/CreateFormModal';
 import { useNavigate } from 'react-router-dom';
-import FormOverAllComments from './FormOverallComments';
-import ReviwerComments from '../Tab/ReviewerComments';
 
-const ReviewForm = () => {
+const DataEntryForm = () => {
     const [value, setValue] = useState(0);
     const navigate = useNavigate();
-    const [popupForm, setPopupForm] = useState({reviewPopup: false, overallPopup: false});
+    const [popupForm, setPopupForm] = useState(false);
     const handleChange = (event, newValue) => {
+        console.log(newValue);
         setValue(newValue);
     };
 
-    const addPopupOpenHandler = (updatedForm) => {
-        setPopupForm({...popupForm, ...updatedForm});
+    const addPopupOpenHandler = () => {
+        setPopupForm(true);
     }
 
-    const addPopupcloseHandler = (updatedForm) => {
-        setPopupForm({...popupForm, ...updatedForm});
+    const addPopupcloseHandler = () => {
+        setPopupForm(false);
     }
 
     const routeHandler = () => {
-        setPopupForm({...popupForm, ...{overallPopup: true}});
-       // navigate("/clinicalApp/reviewGrid?reject=3");
+        navigate("/clinicalApp/reviewGrid?reject=3");
     }
 
     
@@ -35,7 +33,7 @@ const ReviewForm = () => {
             { "type": "header", "subtype": "h4", "label": "Demographic - EDC Form Builder" },
             { "type": "paragraph", "subtype": "p", "label": "Clinical Form builder helps to derive the form which are required for data entry for a subject" },
             { "type": "text", "label": "Name", "className": "form-control", "name": "text-1682062140339", "subtype": "text", "showInGroupDesc": "Please entry correct value for this field" },
-            { "type": "text", "label": "Address", "className": "form-control", "name": "text-1682062149300", "subtype": "text", "showInGroupDesc": "Use Radio button with M and F value" },
+            { "type": "text", "label": "Address", "className": "form-control", "name": "text-1682062149300", "subtype": "text", "showInGroupDesc": "Use Radio button with M and F value", "className": `form-control` },
             { "type": "select", "label": "Marital Status", "className": "form-control", "name": "select-1684565791229", "values": [{ "label": "Single", "value": "male", "selected": true }, { "label": "Married", "value": "female" }] },
             { "type": "number", "label": "Age", "className": "form-control", "name": "number-1684570307921" },
             { "type": "date", "label": "Date Of Birth", "className": "form-control", "name": "date-1684566227404" },
@@ -66,7 +64,7 @@ const ReviewForm = () => {
                             type="text"
                             startAdornment={
                                 <InputAdornment position="start">
-                                    <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                    <Message onClick={addPopupOpenHandler} /> 
                                 </InputAdornment>
                             }
                         />
@@ -92,7 +90,7 @@ const ReviewForm = () => {
                         type="number"
                         startAdornment={
                             <InputAdornment position="start">
-                                <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                <Message onClick={addPopupOpenHandler} /> 
                             </InputAdornment>
                         }
                     />
@@ -107,7 +105,7 @@ const ReviewForm = () => {
                         id="input-with-icon-adornment"
                         startAdornment={
                             <InputAdornment position="start">
-                                <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                <Message onClick={addPopupOpenHandler} /> 
                             </InputAdornment>
                         }
                     >
@@ -121,7 +119,7 @@ const ReviewForm = () => {
                         {element.label}
                     </InputLabel>
                     <Box pt={1} display={'flex'}>
-                        <Box mt={2}><Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> </Box>
+                        <Box mt={2}><Message onClick={addPopupOpenHandler} /> </Box>
                         <Box mt={1} ml={1}><RadioGroup
                             row
                             id="input-with-icon-adornment"
@@ -146,7 +144,7 @@ const ReviewForm = () => {
                             label="Day"
                             startAdornment={
                                 <InputAdornment position="start">
-                                    <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                    <Message onClick={addPopupOpenHandler} /> 
                                 </InputAdornment>
                             }
                         >
@@ -158,7 +156,7 @@ const ReviewForm = () => {
                             label="Month"
                             startAdornment={
                                 <InputAdornment position="start">
-                                    <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                    <Message onClick={addPopupOpenHandler} /> 
                                 </InputAdornment>
                             }
                         >
@@ -171,7 +169,7 @@ const ReviewForm = () => {
                             label="year"
                             startAdornment={
                                 <InputAdornment position="start">
-                                    <Message onClick={() => addPopupOpenHandler({reviewPopup: true})} /> 
+                                    <Message onClick={addPopupOpenHandler} /> 
                                 </InputAdornment>
                             }
                         >
@@ -189,7 +187,6 @@ const ReviewForm = () => {
                     {filedMapper[isFoundIndex]['value'](element)}
                 </Grid>
             }
-            return null;
         });
     }
     return (
@@ -234,10 +231,9 @@ const ReviewForm = () => {
                     </Button>
                 </Stack>
             </Container>
-            <CreateFormModal addPopupcloseHandler={() => addPopupcloseHandler({reviewPopup: false})} popupForm={popupForm.reviewPopup} loadComp={<ReviwerComments />}/>
-            <CreateFormModal addPopupcloseHandler={() => addPopupcloseHandler({overallPopup: false})}  popupForm={popupForm.overallPopup} loadComp={<FormOverAllComments addPopupcloseHandler={() => addPopupcloseHandler({overallPopup: false})}/>}/>
+           
         </>
     )
 };
 
-export default ReviewForm;
+export default DataEntryForm;

@@ -3,6 +3,7 @@ import FormContext from '../../Context/FormContext';
 import { IconButton, Tab, Tabs, Tooltip } from '@mui/material';
 import { AddCircleOutline } from '@mui/icons-material';
 import CreateFormModal from '../Modal/CreateFormModal';
+import AddFormTab from './AddFormTab';
 
 function FormBuilderTab(props) {
 
@@ -45,7 +46,7 @@ function FormBuilderTab(props) {
                     <AddCircleOutline />
                 </IconButton>
             </Tooltip>
-            <CreateFormModal where={"addForm"} createFormHandler={props.createFormHandler} addPopupcloseHandler={addPopupcloseHandler} popupForm={popupForm}/>{/* } */}
+            <CreateFormModal addPopupcloseHandler={addPopupcloseHandler} popupForm={popupForm} loadComp={<AddFormTab createFormHandler={props.createFormHandler} closeForm={addPopupcloseHandler} />}/>{/* } */}
         </>
     )
 }

@@ -1,14 +1,9 @@
 import { DataGrid, GridMoreVertIcon } from '@mui/x-data-grid';
 import React, { useEffect, useState } from 'react';
 import Title from '../Title';
-import { Box, Chip, Grid, IconButton, Menu, MenuItem, Paper } from '@mui/material';
+import { Box, Chip, Grid, IconButton, Link, Menu, MenuItem, Paper } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import QuickFilter from '../../Dashboard/Filters/QuickFilter';
-import CreateFormModal from '../Modal/CreateFormModal';
-import FormOverAllComments from './FormOverallComments';
-import ExtractData from './Extract/ExtractData';
-import CompareData from './Extract/CompareData';
-import SignOff from './Extract/SignOff';
 
 
 // Generate Order Data
@@ -58,7 +53,7 @@ const rows = [
 
 
 
-const ReviewGrid = (props) => {
+const DataEntryGrid = (props) => {
     const navigate = useNavigate();
     const [reject, setReject] = useState(0);
     const ITEM_HEIGHT = 48;
@@ -70,8 +65,7 @@ const ReviewGrid = (props) => {
     const handleEvent = (event) => {
         navigate("/clinicalApp/formReviewer");
     }
-    
-    const [popupForm, setPopupForm] = useState({extractData: false, compareDate: false, history: false, signOff: false});
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -81,20 +75,8 @@ const ReviewGrid = (props) => {
         setAnchorEl(null);
     };
 
-    const extractHandler = (option) => {
-        setAnchorEl(null);
-        switch(option){
-            case 'Extract Data': 
-            setPopupForm({...popupForm, ...{extractData: true}});
-            break;
-            case 'Compare Data': 
-            setPopupForm({...popupForm, ...{compareDate: true}});
-            break;
-            case 'Sign Off': 
-            setPopupForm({...popupForm, ...{signOff: true}});
-            break;
-        }
-        
+    const extractPopupHandler = () => {
+        handleClose();
     }
     const MoreActions = () => {
         return (
@@ -127,19 +109,14 @@ const ReviewGrid = (props) => {
                 >
                     {options.map((option) => (
                         <>
-                            <MenuItem key={option} selected={option === 'Pyxis'} onClick={extractHandler.bind(this, option)}>
-                                {option}
+                            <MenuItem key={option} selected={option === 'Pyxis'} onClick={extractPopupHandler}>
+                                <Link>{option}</Link>
                             </MenuItem>
                         </>
                     ))}
                 </Menu>
             </div>
         )
-    }
-
-    
-    const addPopupcloseHandler = (updatedForm) => {
-        setPopupForm({...popupForm, ...updatedForm});
     }
 
     const columns = [
@@ -283,12 +260,9 @@ const ReviewGrid = (props) => {
                         />
                     </div>
                 </Paper>
-            </Grid>
-            <CreateFormModal addPopupcloseHandler={() => addPopupcloseHandler({extractData: false})} popupForm={popupForm.extractData} loadComp={<ExtractData addPopupcloseHandler={() => addPopupcloseHandler({extractData: false})}/>}/>
-            <CreateFormModal addPopupcloseHandler={() => addPopupcloseHandler({compareDate: false})} popupForm={popupForm.compareDate} loadComp={<CompareData addPopupcloseHandler={() => addPopupcloseHandler({compareDate: false})}/>}/>
-            <CreateFormModal addPopupcloseHandler={() => addPopupcloseHandler({signOff: false})} popupForm={popupForm.signOff} loadComp={<SignOff addPopupcloseHandler={() => addPopupcloseHandler({signOff: false})}/>}/>
+            </Grid>       
         </React.Fragment>
     )
 }
 
-export default ReviewGrid;
+export default DataEntryGrid;
