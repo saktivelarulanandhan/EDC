@@ -5,6 +5,7 @@ import { ClearAllOutlined, Message, SaveOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import CreateFormModal from '../Modal/CreateFormModal';
 import EDCBreadcrumbs from '../BreadCrumbs';
+import LabelText from '../atoms/LabelText/LabelText';
 window.jQuery = $;
 window.$ = $;
 function ClinicalForm(props) {
@@ -50,9 +51,10 @@ function ClinicalForm(props) {
             },
             {
                 type: 'text', value: (element) => <FormControl variant="standard" style={{display: 'flex', flexDirection: "row"}}>
-                    <InputLabel htmlFor="input-with-icon-adornment" disableAnimation={true} shrink={true}>
+                    {/* <InputLabel htmlFor="input-with-icon-adornment" disableAnimation={true} shrink={true}>
                         {element.label}
-                    </InputLabel>
+                    </InputLabel> */}
+                    <LabelText label={element.label}/>
                     <Box sx={{ '& > :not(style)': { m: 1, mt: 2 } }} style={{flex: 1}}>
                         <Input style={{ width: element.units && element.units.length !== 0 ? '80%' : '100%' }}
                             id="input-with-icon-adornment"
