@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 
 function Login() {
     const navigate = useNavigate();
-    const handleSubmit = (event) => {
+    const handleSubmit = (event:any) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
