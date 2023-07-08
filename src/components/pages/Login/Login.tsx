@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import FormInputText from '../../atoms/FormInputText/FormInputText';
 
 function Login() {
     const navigate = useNavigate();
@@ -58,20 +58,16 @@ function Login() {
                         Sign in
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
+                        <FormInputText
+                            required={true}
                             id="email"
                             label="User Id"
                             name="email"
                             autoComplete="email"
-                            autoFocus
+                            autoFocus={true}
                         />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
+                        <FormInputText
+                            required={true}
                             name="password"
                             label="Password"
                             type="password"

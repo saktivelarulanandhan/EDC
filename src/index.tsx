@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ROUTING_PATH } from './Routing/RoutingConstant';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import ClinicalApp from './ClinicalApp';
+
+import reportWebVitals from './reportWebVitals';
+import { IRoute, ROUTING_PATH } from './routing/RoutingConstant';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -22,10 +22,10 @@ root.render(
     <ThemeProvider theme={mdTheme}>
       <BrowserRouter>
           <Routes>
-            {ROUTING_PATH.map((route) => {
-              return <Route path={route.path} element={route.component}>
-                { route.children && route.children.map( (childRoute) => {
-                  return <Route path={childRoute.path} element={childRoute.component}> </Route>
+            {ROUTING_PATH.map((route: IRoute) => {
+              return <Route key={route.path} path={route.path} Component={route.component}>
+                { route.children && route.children.length > 0 && route.children.map( (childRoute: IRoute) => {
+                  return <Route path={childRoute.path} Component={childRoute.component}> </Route>
                 })
                 }
               </Route>;
