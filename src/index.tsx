@@ -1,36 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import reportWebVitals from './reportWebVitals';
-import { IRoute, ROUTING_PATH } from './routing/RoutingConstant';
-import './index.css';
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+import reportWebVitals from "./reportWebVitals";
+import { IRoute, ROUTING_PATH } from "./routing/RoutingConstant";
+import "./index.css";
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
 const mdTheme = createTheme({
   palette: {
     primary: {
-      main: "#0c3d67"
-    }
-  }
+      main: "#0c3d671",
+    },
+  },
 });
 
 root.render(
   <>
     <ThemeProvider theme={mdTheme}>
       <BrowserRouter>
-          <Routes>
-            {ROUTING_PATH.map((route: IRoute) => {
-              return <Route key={route.path} path={route.path} Component={route.component}>
-                { route.children && route.children.length > 0 && route.children.map( (childRoute: IRoute) => {
-                  return <Route path={childRoute.path} Component={childRoute.component}> </Route>
-                })
-                }
-              </Route>;
-            })}
-          </Routes>
+        <Routes>
+          {ROUTING_PATH.map((route: IRoute) => {
+            return (
+              <Route
+                key={route.path}
+                path={route.path}
+                Component={route.component}
+              >
+                {route.children &&
+                  route.children.length > 0 &&
+                  route.children.map((childRoute: IRoute) => {
+                    return (
+                      <Route
+                        path={childRoute.path}
+                        Component={childRoute.component}
+                      >
+                        {" "}
+                      </Route>
+                    );
+                  })}
+              </Route>
+            );
+          })}
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   </>
