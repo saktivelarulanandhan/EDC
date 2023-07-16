@@ -6,9 +6,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import reportWebVitals from "./reportWebVitals";
 import { IRoute, ROUTING_PATH } from "./routing/RoutingConstant";
 import "./index.css";
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+import { AppProvider } from "./contexts/application.context";
+import { CssBaseline } from "@mui/material";
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 const mdTheme = createTheme({
   palette: {
@@ -21,34 +21,26 @@ const mdTheme = createTheme({
 root.render(
   <>
     <ThemeProvider theme={mdTheme}>
+      <CssBaseline />
       <BrowserRouter>
-        <Routes>
-          {ROUTING_PATH.map((route: IRoute) => {
-            return (
-              <Route
-                key={route.path}
-                path={route.path}
-                Component={route.component}
-              >
-                {route.children &&
-                  route.children.length > 0 &&
-                  route.children.map((childRoute: IRoute) => {
-                    return (
-                      <Route
-                        path={childRoute.path}
-                        Component={childRoute.component}
-                      >
-                        {" "}
-                      </Route>
-                    );
-                  })}
-              </Route>
-            );
-          })}
-        </Routes>
+        <AppProvider>
+          <Routes>
+            {ROUTING_PATH.map((route: IRoute) => {
+              return (
+                <Route key={route.path} path={route.path} Component={route.component}>
+                  {route.children &&
+                    route.children.length > 0 &&
+                    route.children.map((childRoute: IRoute) => {
+                      return <Route path={childRoute.path} Component={childRoute.component} />;
+                    })}
+                </Route>
+              );
+            })}
+          </Routes>
+        </AppProvider>
       </BrowserRouter>
     </ThemeProvider>
-  </>
+  </>,
 );
 
 // If you want to start measuring performance in your app, pass a function

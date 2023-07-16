@@ -1,3 +1,4 @@
+import ClinicalApp from "../components/pages/ClinicalApp/ClinicalApp";
 import Dashboard from "../components/pages/Dashboard/Dashboard";
 import Error from "../components/pages/Error/Error";
 import Login from "../components/pages/Login/Login";
@@ -17,7 +18,13 @@ export const ROUTING_PATH: Array<IRoute> = [
     component: Error,
   },
   {
-    path: "/dashboard",
-    component: Dashboard,
+    path: "/clinicalApp",
+    component: ClinicalApp,
+    children: [
+      {
+        path: "dashboard",
+        component: Dashboard,
+      },
+    ],
   },
 ];

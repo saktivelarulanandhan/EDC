@@ -21,7 +21,7 @@ function Login() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    navigate("/dashboard");
+    navigate("/clinicalApp/dashboard");
   };
 
   return (
