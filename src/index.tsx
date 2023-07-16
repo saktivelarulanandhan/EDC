@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 const mdTheme = createTheme({
   palette: {
     primary: {
-      main: "#0c3d671",
+      main: "#0c3d67",
     },
   },
 });
