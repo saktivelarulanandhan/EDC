@@ -10,7 +10,7 @@ const MasterLayout = () => {
     setOpen(val);
   };
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", height: "100%" }}>
       <Header title="EDC" open={open} handleOpen={handleOpen} />
       <MenuDrawer open={open} handleOpen={handleOpen} />
       <Box

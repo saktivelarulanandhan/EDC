@@ -2,9 +2,9 @@ import React from "react";
 import { Table } from "@mui/material";
 import { DataGrid, GridMoreVertIcon } from "@mui/x-data-grid";
 export interface ITableListProps {
-  columns: [];
+  columns: any;
   rowClick: any;
-  data: [];
+  data: any;
 }
 function TableList(props: ITableListProps) {
   const { columns, rowClick, data } = { ...props };
